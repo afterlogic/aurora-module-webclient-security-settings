@@ -4,9 +4,13 @@ module.exports = function (oAppData) {
 	var
 		App = require('%PathToCoreWebclientModule%/js/App.js'),
 
-		TextUtils = require('%PathToCoreWebclientModule%/js/utils/Text.js')
+		TextUtils = require('%PathToCoreWebclientModule%/js/utils/Text.js'),
+		
+		Settings = require('modules/%ModuleName%/js/Settings.js')
 	;
-	
+
+	Settings.init(oAppData);
+
 	if (App.isUserNormalOrTenant())
 	{
 		return {

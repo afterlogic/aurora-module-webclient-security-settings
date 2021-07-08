@@ -2,5 +2,14 @@
     "Disabled": [
 		false,
 		"bool"
+	],
+    "ModulesOrder": [
+		[
+			"ChangePasswordWebclient",
+			"StandardResetPassword",
+			"IPAllowList",
+			"TwoFactorAuth"
+		],
+		"array"
 	]
 }

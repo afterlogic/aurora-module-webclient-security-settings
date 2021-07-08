@@ -1,12 +1,13 @@
 'use strict';
 
 var
-	_ = require('underscore')
+	_ = require('underscore'),
+
+	Types = require('%PathToCoreWebclientModule%/js/utils/Types.js')
 ;
 
 module.exports = {
-	ServerModuleName: '%ModuleName%',
-	HashModuleName: 'security',
+	ModulesOrder: [],
 	
 	/**
 	 * Initializes settings from AppData object sections.
@@ -19,7 +20,7 @@ module.exports = {
 		
 		if (!_.isEmpty(oAppDataSection))
 		{
-			// parse settings
+			this.ModulesOrder = Types.pArray(oAppDataSection.ModulesOrder);
 		}
 	}
 };

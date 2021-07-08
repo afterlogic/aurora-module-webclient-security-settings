@@ -7,7 +7,7 @@ var
 	ModulesManager = require('%PathToCoreWebclientModule%/js/ModulesManager.js'),
 	CAbstractSettingsFormView = ModulesManager.run('SettingsWebclient', 'getAbstractSettingsFormViewClass'),
 	
-	aModuleOrder = ['ChangePasswordWebclient', 'StandardResetPassword', 'TwoFactorAuth']
+	Settings = require('modules/%ModuleName%/js/Settings.js')
 ;
 
 /**
@@ -51,8 +51,9 @@ CSecuritySettingsFormView.prototype.registerTabSection = function (fGetSectionVi
 	}
 
 	this.securitySections().push(oSection);
+	var iLastIndex = Settings.ModulesOrder.length;
 	this.securitySections(_.sortBy(this.securitySections(), function (oSection) {
-		var iIndex = _.indexOf(aModuleOrder, oSection.sModuleName);
+		var iIndex = _.indexOf(Settings.ModulesOrder, oSection.sModuleName);
 		return iIndex !== -1 ? iIndex : iLastIndex;
 	}));
 };
