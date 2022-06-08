@@ -1,15 +1,23 @@
 {
-    "Disabled": [
-		false,
-		"bool"
-	],
-    "ModulesOrder": [
-		[
-			"ChangePasswordWebclient",
-			"StandardResetPassword",
-			"IPAllowList",
-			"TwoFactorAuth"
-		],
-		"array"
-	]
+  "Disabled": [
+    false,
+    "bool"
+  ],
+  "Disabled_Description": [
+    "",
+    "string"
+  ],
+  "ModulesOrder": [
+    [
+      "ChangePasswordWebclient",
+      "StandardResetPassword",
+      "IPAllowList",
+      "TwoFactorAuth"
+    ],
+    "array"
+  ],
+  "ModulesOrder_Description": [
+    "",
+    "string"
+  ]
 }
