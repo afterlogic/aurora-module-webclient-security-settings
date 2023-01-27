@@ -16,12 +16,12 @@ namespace Aurora\Modules\SecuritySettingsWebclient;
  */
 class Module extends \Aurora\System\Module\AbstractWebclientModule
 {
-	public function GetSettings()
-	{
-		\Aurora\System\Api::checkUserRoleIsAtLeast(\Aurora\System\Enums\UserRole::Anonymous);
-		
-		return [
-			'ModulesOrder' => $this->getConfig('ModulesOrder', [])
-		];
-	}
+    public function GetSettings()
+    {
+        \Aurora\System\Api::checkUserRoleIsAtLeast(\Aurora\System\Enums\UserRole::Anonymous);
+
+        return [
+            'ModulesOrder' => $this->getConfig('ModulesOrder', [])
+        ];
+    }
 }
