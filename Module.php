@@ -16,6 +16,15 @@ namespace Aurora\Modules\SecuritySettingsWebclient;
  */
 class Module extends \Aurora\System\Module\AbstractWebclientModule
 {
+    /**
+     *
+     * @return Module
+     */
+    public static function Decorator()
+    {
+        return parent::Decorator();
+    }
+
     public function GetSettings()
     {
         \Aurora\System\Api::checkUserRoleIsAtLeast(\Aurora\System\Enums\UserRole::Anonymous);
