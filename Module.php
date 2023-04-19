@@ -12,6 +12,8 @@ namespace Aurora\Modules\SecuritySettingsWebclient;
  * @license https://afterlogic.com/products/common-licensing Afterlogic Software License
  * @copyright Copyright (c) 2023, Afterlogic Corp.
  *
+ * @property Settings $oModuleSettings
+ *
  * @package Modules
  */
 class Module extends \Aurora\System\Module\AbstractWebclientModule
@@ -39,7 +41,7 @@ class Module extends \Aurora\System\Module\AbstractWebclientModule
         \Aurora\System\Api::checkUserRoleIsAtLeast(\Aurora\System\Enums\UserRole::Anonymous);
 
         return [
-            'ModulesOrder' => $this->getConfig('ModulesOrder', [])
+            'ModulesOrder' => $this->oModuleSettings->ModulesOrder
         ];
     }
 }
