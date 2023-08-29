@@ -30,6 +30,7 @@ CSecuritySettingsFormView.prototype.registerTabSection = function (fGetSectionVi
 	var oSection = fGetSectionView();
 	oSection.sModuleName = sModuleName;
 	oSection.visibleSection = ko.observable(true);
+	oSection.bSecurityScreenEmbeded = true;
 	
 	if (sModuleName === 'TwoFactorAuth')
 	{
