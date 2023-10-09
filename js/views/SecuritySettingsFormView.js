@@ -28,28 +28,23 @@ CSecuritySettingsFormView.prototype.ViewTemplate = '%ModuleName%_SecuritySetting
 
 CSecuritySettingsFormView.prototype.registerTabSection = function (fGetSectionView, sModuleName)
 {
-	var oSection = fGetSectionView();
-	oSection.sModuleName = sModuleName;
-	oSection.visibleSection = ko.observable(true);
+	const oSection = fGetSectionView();
+	oSection.sSsecurityModuleName = sModuleName;
 	oSection.bSecurityScreenEmbeded = true;
-	
-	if (sModuleName === 'TwoFactorAuth')
+	oSection.securityVisibleSection = ko.observable(true);
+
+	if (ko.isObservable(oSection.subPage))
 	{
-		this.hideSecuritySiblings(true);
-		oSection.visibleHeading(oSection.passwordVerified());
-		this.visibleHeading(!oSection.passwordVerified());
-		oSection.passwordVerified.subscribe(function (bPasswordVerified) {
-			_.each(this.securitySections(), function (oSection) {
-				if (hideSecuritySiblings()) 
-				{
-						oSection.visibleHeading(bPasswordVerified);
-						this.visibleHeading(!bPasswordVerified);
-				} 
-				else 
-				{
-						oSection.visibleSection(!bPasswordVerified);
-				}
-		}.bind(this));
+		oSection?.visibleHeading(false);
+
+		oSection.subPage.subscribe(function (v) {
+			oSection?.visibleHeading(v);
+			this.visibleHeading(!v);
+
+			_.each(this.securitySections(), function (oItem) {
+				const bHideSection = v ? oItem.sSsecurityModuleName === oSection.sSsecurityModuleName : true;
+				oItem.securityVisibleSection(bHideSection);
+			})
 		}, this);
 	}
 
