@@ -1,8 +1,8 @@
-<div class="panel_top" data-bind="visible: visibleHeading">
+<div class="panel_top" data-bind="visible: visibleHeading() || hideSecuritySiblings()">
 	<h2 class="settings_heading" data-bind="i18n: {'key': '%MODULENAME%/HEADING_SETTINGS_TAB'}"></h2>
 </div>
 <!-- ko foreach: securitySections -->
-	<!-- ko if: $data.visibleSection -->
-		<!-- ko template: {data: $data, name: $data.ViewTemplate} --><!-- /ko -->
-	<!-- /ko -->
+    <!-- ko if: $data.visibleSection() || !hideSecuritySiblings() -->
+        <!-- ko template: {data: $data, name: $data.ViewTemplate} --><!-- /ko -->
+    <!-- /ko -->
 <!-- /ko -->

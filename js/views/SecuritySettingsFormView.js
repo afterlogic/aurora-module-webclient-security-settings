@@ -19,6 +19,7 @@ function CSecuritySettingsFormView()
 	
 	this.visibleHeading = ko.observable(true);
 	this.securitySections = ko.observableArray([]);
+	this.hideSecuritySiblings = ko.observable(false);
 }
 
 _.extendOwn(CSecuritySettingsFormView.prototype, CAbstractSettingsFormView.prototype);
@@ -34,20 +35,21 @@ CSecuritySettingsFormView.prototype.registerTabSection = function (fGetSectionVi
 	
 	if (sModuleName === 'TwoFactorAuth')
 	{
+		this.hideSecuritySiblings(true);
 		oSection.visibleHeading(oSection.passwordVerified());
 		this.visibleHeading(!oSection.passwordVerified());
 		oSection.passwordVerified.subscribe(function (bPasswordVerified) {
 			_.each(this.securitySections(), function (oSection) {
-				if (oSection.sModuleName === 'TwoFactorAuth')
+				if (hideSecuritySiblings()) 
 				{
-					oSection.visibleHeading(bPasswordVerified);
-					this.visibleHeading(!bPasswordVerified);
-				}
-				else
+						oSection.visibleHeading(bPasswordVerified);
+						this.visibleHeading(!bPasswordVerified);
+				} 
+				else 
 				{
-					oSection.visibleSection(!bPasswordVerified);
+						oSection.visibleSection(!bPasswordVerified);
 				}
-			}.bind(this));
+		}.bind(this));
 		}, this);
 	}
 
